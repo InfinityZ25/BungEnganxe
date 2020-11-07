@@ -17,29 +17,28 @@ public class JoinEvent implements Listener {
         ProxiedPlayer player = event.getPlayer();
         TextComponent msg = new TextComponent();
         msg.setText(" Has joined to the lobby!");
-        Collection<String> group = player.getGroups();
-        if (group.contains("owner")) {
+        if (player.hasPermission("enganxe.owner")) {
             ProxyServer.getInstance().broadcast(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "Owner" + ChatColor.DARK_GRAY + "] " + ChatColor.RED + player + msg);
         }
-        else if (group.contains("staff")) {
+        else if (player.hasPermission("enganxe.staff")) {
             ProxyServer.getInstance().broadcast(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Staff" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player + msg);
         }
-        else if (group.contains("mod")) {
+        else if (player.hasPermission("enganxe.mod")) {
             ProxyServer.getInstance().broadcast(ChatColor.DARK_GRAY + "[" + ChatColor.BLUE + "Mod" + ChatColor.DARK_GRAY + "] " + ChatColor.LIGHT_PURPLE + player + msg);
         }
-        else if (group.contains("diamond")) { //diamante
+        else if (player.hasPermission("enganxe.d")) { //diamante
             ProxyServer.getInstance().broadcast(ChatColor.AQUA + "[♦] " + player + msg);
         }
-        else if (group.contains("pica")) { //pica
+        else if (player.hasPermission("enganxe.p")) {  //pica
             ProxyServer.getInstance().broadcast(ChatColor.LIGHT_PURPLE + "[♠] " + player + msg);
         }
-        else if (group.contains("trebol")) { //trebol
+        else if (player.hasPermission("enganxe.t")) { //trebol
             ProxyServer.getInstance().broadcast(ChatColor.GREEN + "[♣] " + player + msg);
         }
-        else if (group.contains("heart")) { //heart/corazon
+        else if (player.hasPermission("enganxe.h")) { //heart/corazon
             ProxyServer.getInstance().broadcast(ChatColor.RED + "[♥] " + player + msg);
         }
-        else if (group.contains("media")) {
+        else if (player.hasPermission("enganxe.m")) {
             ProxyServer.getInstance().broadcast(ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "Media" + ChatColor.GRAY + "] " + ChatColor.LIGHT_PURPLE + player + msg);
         }
     }

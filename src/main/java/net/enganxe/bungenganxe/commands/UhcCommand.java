@@ -25,6 +25,7 @@ public class UhcCommand extends Command {
             return;
         }
         ServerInfo target = ProxyServer.getInstance().getServerInfo("uhc");
+        player.sendMessage(ChatColor.GREEN + "Connecting to UHC...");
         player.connect(target);
     }
 }

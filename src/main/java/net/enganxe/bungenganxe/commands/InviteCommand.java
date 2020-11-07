@@ -22,7 +22,7 @@ public class InviteCommand extends Command {
         if (cooldowns.containsKey(sender.getName())) {
             long secondsLeft = ((cooldowns.get(sender.getName())/1000)+cooldownTime) - (System.currentTimeMillis()/1000);
             if(secondsLeft>0) {
-                sender.sendMessage("You cant use that commands for another " + secondsLeft + " seconds!");
+                sender.sendMessage(ChatColor.RED + "You cant use that commands for another " + secondsLeft + " seconds!");
                 return;
             }
         }
@@ -38,27 +38,26 @@ public class InviteCommand extends Command {
         if (player.getServer().getInfo().getName().equalsIgnoreCase("uhc") || player.getServer().getInfo().getName().equalsIgnoreCase("meetup" )) {
             if (player.getServer().getInfo().getName().equalsIgnoreCase("uhc")) {
                 serverr.setText(ChatColor.GOLD + "UHC,");
-                click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/server uhc"));
+                click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "server uhc"));
             } else if (player.getServer().getInfo().getName().equalsIgnoreCase("meetup")) {
                 serverr.setText(ChatColor.RED + "Meetup,");
-                click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/server meetup"));
+                click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "server meetup"));
             }
-            String group = String.valueOf(player.getGroups());
-            if (group.contains("owner")) {
+            if (player.hasPermission("enganxe.owner")) {
                 ProxyServer.getInstance().broadcast(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "Owner" + ChatColor.DARK_GRAY + "] " + ChatColor.RED + player + msg + serverr + type + click);
-            } else if (group.contains("staff")) {
+            } else if (player.hasPermission("enganxe.staff")) {
                 ProxyServer.getInstance().broadcast(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "Staff" + ChatColor.DARK_GRAY + "] " + ChatColor.YELLOW + player + msg + serverr + type + click);
-            } else if (group.contains("mod")) {
+            } else if (player.hasPermission("enganxe.mod")) {
                 ProxyServer.getInstance().broadcast(ChatColor.DARK_GRAY + "[" + ChatColor.BLUE + "Mod" + ChatColor.DARK_GRAY + "] " + ChatColor.LIGHT_PURPLE + player + msg + serverr + type + click);
-            } else if (group.contains("diamond")) { //diamante
+            } else if (player.hasPermission("enganxe.d")) { //diamante
                 ProxyServer.getInstance().broadcast(ChatColor.AQUA + "[♦] " + player + msg + serverr + type + click);
-            } else if (group.contains("pica")) { //pica
+            } else if (player.hasPermission("enganxe.p")) {  //pica
                 ProxyServer.getInstance().broadcast(ChatColor.LIGHT_PURPLE + "[♠] " + player + msg + serverr + type + click);
-            } else if (group.contains("trebol")) { //trebol
+            } else if (player.hasPermission("enganxe.t")) {//trebol
                 ProxyServer.getInstance().broadcast(ChatColor.GREEN + "[♣] " + player + msg + serverr + type + click);
-            } else if (group.contains("heart")) { //heart/corazon
+            } else if (player.hasPermission("enganxe.h")) { //heart/corazon
                 ProxyServer.getInstance().broadcast(ChatColor.RED + "[♥] " + player + msg + serverr + type + click);
-            } else if (group.contains("media")) {
+            } else if (player.hasPermission("enganxe.media")) {
                 ProxyServer.getInstance().broadcast(ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "Media" + ChatColor.GRAY + "] " + ChatColor.LIGHT_PURPLE + player + msg + serverr + type + click);
             }
         }
