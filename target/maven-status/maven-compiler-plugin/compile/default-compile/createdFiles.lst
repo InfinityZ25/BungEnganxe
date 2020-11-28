@@ -1,0 +1,6 @@
+net\enganxe\bungenganxe\Main.class
+net\enganxe\bungenganxe\commands\meetupCommand.class
+net\enganxe\bungenganxe\commands\InviteCommand.class
+net\enganxe\bungenganxe\events\meetupRestart.class
+net\enganxe\bungenganxe\commands\UhcCommand.class
+net\enganxe\bungenganxe\events\JoinEvent.class
