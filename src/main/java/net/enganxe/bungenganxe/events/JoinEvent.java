@@ -15,8 +15,9 @@ public class JoinEvent implements Listener {
     @EventHandler
     public void LoginEvent (PostLoginEvent event){
         ProxiedPlayer player = event.getPlayer();
-        TextComponent msg = new TextComponent();
-        msg.setText(" Has joined to the lobby!");
+        String pname = player.getName();
+        String msg;
+        msg = " has joined to the lobby!";
         if (player.hasPermission("enganxe.owner")) {
             ProxyServer.getInstance().broadcast(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_RED + "Owner" + ChatColor.DARK_GRAY + "] " + ChatColor.RED + player + msg);
         }
